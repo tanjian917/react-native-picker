@@ -35,6 +35,7 @@ typedef void(^backBolock)(NSDictionary * );
 
 @property (strong,nonatomic)UIButton *leftBtn;//取消
 @property (strong,nonatomic)UIButton *rightBtn;
+@property (strong,nonatomic)UIButton *cenBtn;
 
 @property(strong,nonatomic)NSString *leftStr;
 @property(strong,nonatomic)NSString *centStr;

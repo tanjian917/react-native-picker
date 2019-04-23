@@ -12,6 +12,7 @@ const options = {
     pickerConfirmBtnText: 'confirm',
     pickerCancelBtnText: 'cancel',
     pickerTitleText: 'pls select',
+    pickerTitleAction: false,
     pickerConfirmBtnColor: [1, 186, 245, 1],
     pickerCancelBtnColor: [1, 186, 245, 1],
     pickerTitleColor: [20, 20, 20, 1],
@@ -25,6 +26,7 @@ const options = {
     onPickerConfirm(){},
     onPickerCancel(){},
     onPickerSelect(){},
+    onPickerTitleClick(){},
     pickerToolBarFontSize: 16,
     pickerFontSize: 16,
     pickerFontColor: [31, 31 ,31, 1]
@@ -39,7 +41,8 @@ export default {
         const fnConf = {
             confirm: opt.onPickerConfirm,
             cancel: opt.onPickerCancel,
-            select: opt.onPickerSelect
+            select: opt.onPickerSelect,
+            titleclick: opt.onPickerTitleClick
         };
 
         Picker._init(opt);

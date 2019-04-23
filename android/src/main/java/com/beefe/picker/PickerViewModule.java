@@ -224,6 +224,16 @@ public class PickerViewModule extends ReactContextBaseJavaModule implements Life
                 int[] colors = getColor(array);
                 titleTV.setTextColor(argb(colors[3], colors[0], colors[1], colors[2]));
             }
+            titleTV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    WritableMap map = Arguments.createMap();
+                    map.putString("type", "titleclick");
+                    sendEvent(getReactApplicationContext(), PICKER_EVENT_NAME, map);
+                    hide();
+                }
+            });
+
 
             if (options.hasKey(PICKER_CANCEL_BTN_TEXT)) {
                 cancelText = options.getString(PICKER_CANCEL_BTN_TEXT);

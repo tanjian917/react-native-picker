@@ -57,6 +57,17 @@
     [self.leftBtn addTarget:self action:@selector(cancleAction) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:self.leftBtn];
     
+    self.cenBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.cenBtn.frame = CGRectMake(90, 5, SCREEN_WIDTH-180, 30);
+    self.cenBtn.font = [UIFont fontWithName:_pickerFontFamily size:[_pickerToolBarFontSize integerValue]];
+    self.cenBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    [self.cenBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 10.0)];
+    [self.cenBtn setTitle:self.centStr forState:UIControlStateNormal];
+    [self.cenBtn setTitleColor:[self colorWith:centerbtnColor] forState:UIControlStateNormal];
+    [self.cenBtn addTarget:self action:@selector(titleAction) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:self.cenBtn];
+    
+    
     self.rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.rightBtn.frame = CGRectMake(view.frame.size.width-90,0, 90, 40);
     self.rightBtn.font = [UIFont fontWithName:_pickerFontFamily size:[_pickerToolBarFontSize integerValue]];
@@ -67,12 +78,12 @@
     [self.rightBtn addTarget:self action:@selector(cfirmAction) forControlEvents:UIControlEventTouchUpInside];  
     [view addSubview:self.rightBtn];
     
-    UILabel *cenLabel=[[UILabel alloc]initWithFrame:CGRectMake(90, 5, SCREEN_WIDTH-180, 30)];
-    cenLabel.text=self.centStr;
-    cenLabel.textAlignment=NSTextAlignmentCenter;
-    cenLabel.font = [UIFont fontWithName:_pickerFontFamily size:[_pickerToolBarFontSize integerValue]];
-    [cenLabel setTextColor:[self colorWith:centerbtnColor]];
-    [view addSubview:cenLabel];
+    // UILabel *cenLabel=[[UILabel alloc]initWithFrame:CGRectMake(90, 5, SCREEN_WIDTH-180, 30)];
+    // cenLabel.text=self.centStr;
+    // cenLabel.textAlignment=NSTextAlignmentCenter;
+    // cenLabel.font = [UIFont fontWithName:_pickerFontFamily size:[_pickerToolBarFontSize integerValue]];
+    // [cenLabel setTextColor:[self colorWith:centerbtnColor]];
+    // [view addSubview:cenLabel];
 
     self.pick = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 40, self.frame.size.width, self.frame.size.height - 40)];
     self.pick.delegate = self;
@@ -610,6 +621,21 @@
 
     self.pick.hidden=YES;
 }
+-(void)titleAction
+{
+    NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
+    [dic setValue:@"titleclick" forKey:@"type"];
+    
+    self.bolock(dic);
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [UIView animateWithDuration:.2f animations:^{
+            
+            [self setFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 250)];
+        }];
+    });
+}
+
 //按了确定按钮
 -(void)cfirmAction
 {

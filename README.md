@@ -32,6 +32,7 @@
 |onPickerConfirm       | function|                    | iOS/Android  |   |
 |onPickerCancel        | function|                    | iOS/Android  |   |
 |onPickerSelect        | function|                    | iOS/Android  |   |
+|onPickerTitleClick    | function|                    | iOS/Android  |   |
 
 #### Methods
 
@@ -79,6 +80,9 @@ Picker.init({
     },
     onPickerSelect: data => {
         console.log(data);
+    },
+    onPickerTitleClick: () => {
+        console.log('Picker title has click.')
     }
 });
 Picker.show();
